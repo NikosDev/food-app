@@ -1,6 +1,6 @@
 # Burger App
 
-Burger app is an app created with React framework.
+Burger app is an application created with React framework.
 
 # Demo Site
 
