@@ -25,7 +25,8 @@ const buildControls = (props) => (
         <button 
             className={classes.OrderButton}
             disabled={!props.purchasable}
-            onClick={props.purchaseContinued}
+            //enable this to send http request with axios to firebase
+            //onClick={props.purchaseContinued}
             >ORDER NOW 
         </button>
     </div>
