@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Auk from '../../hoc/Auk';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
+import axios from '../../axios-order';
 
 const INGREDIENT_PRICES = {
     salad: 0.5,
@@ -22,6 +23,7 @@ class BurgerBuilder extends Component {
         totalPrice: 4,
         purchasable: false
     }
+
 
     updatePurchaseState (ingredients) {
         const sum = Object.keys(ingredients)
@@ -65,6 +67,26 @@ class BurgerBuilder extends Component {
         this.updatePurchaseState(updatedIngredients);
     }
     
+    purchaseContinueHandler = () => {
+        //console.log('victory');
+        const order = {
+            ingredients: this.state.ingredients,
+            price: this.state.totalPrice,
+            customer: { 
+                name: 'Nikos',
+                address: {
+                    street: 'TestStreet 23',
+                    zipCode: '43545',
+                    country: 'Greece'
+                }
+            },
+            email: 'test@demo.com'
+        }
+        axios.post('/orders.json', order)
+            .then(response => console.log(response))
+            .catch(error => console.log(error));
+    }
+
     render () {
         const disabledInfo = {...this.state.ingredients}
         for (let key in disabledInfo){
@@ -80,6 +102,7 @@ class BurgerBuilder extends Component {
                     disabled={disabledInfo}
                     price={this.state.totalPrice}
                     purchasable={this.state.purchasable}
+                    purchaseContinued= {this.purchaseContinueHandler}
                 ></BuildControls>
             </Auk>
         )
