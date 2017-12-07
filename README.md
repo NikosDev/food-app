@@ -4,7 +4,7 @@ Burger app is an application created with React framework.
 
 # Demo Site
 
-[https://burger-mode.herokuapp.com/](https://burger-mode.herokuapp.com/)
+[https://burger-simple-app.herokuapp.com/](https://burger-simple-app.herokuapp.com/)
 
 # Built With
 
